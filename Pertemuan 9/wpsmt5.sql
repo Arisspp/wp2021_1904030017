@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 08:30 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jan 22, 2022 at 12:56 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,12 +42,39 @@ CREATE TABLE `calon_mhs` (
 --
 
 INSERT INTO `calon_mhs` (`id`, `nama`, `alamat`, `jenis_kelamin`, `agama`, `sekolah_asal`, `foto_maba`) VALUES
-(3, 'Denisa', 'Jayanegra 1', 'perempuan', 'Islam', 'SMAN 3', 'foto2.png'),
-(4, 'Ricky', 'Pulosari 5', 'laki-laki', 'Islam', 'SMAN 4', 'foto1.png'),
-(6, 'Rafli Abi', 'Karang 2', 'laki-laki', 'Islam', 'SMAN 5 ', 'foto1.png'),
-(7, 'Rikas Prawira', 'Newton 8 ', 'laki-laki', 'Islam', 'SMAN 2', 'foto1.png'),
-(8, 'Adinda Safa', 'Ujung Kulon 42', 'perempuan', 'Islam', 'SMAN 1 Tangerang', 'foto2.png'),
-(9, 'Lukas', 'Bumi Serpong ', 'laki-laki', 'islam', 'SMAN 13', 'foto1.png');
+(1, 'Jania', 'Modernland', 'perempuan', 'Islam', 'SMA11', 'foto2.png'),
+(2, 'jono', 'permata', 'lakilaki', 'islam', 'smkn1', 'foto1.png'),
+(3, 'Lidya', 'Sakura no 27', 'perempuan', 'Islam', 'SMA12', 'foto2.png'),
+(4, 'Rogo', 'Taman golf 5', 'laki-laki', 'Islam', 'SMAN 4', 'foto2.png'),
+(6, 'Alibi', 'Pasadena 6\r\n', 'laki-laki', 'Islam', 'SMAN 5 ', 'foto2.png'),
+(7, 'Rikas Prawira', 'Newton 8 ', 'laki-laki', 'Islam', 'SMAN 2', 'foto1.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `daftar_dosen`
+--
+
+CREATE TABLE `daftar_dosen` (
+  `foto_dosen` varchar(12) NOT NULL,
+  `nama` varchar(40) NOT NULL,
+  `nidn` int(11) NOT NULL,
+  `jenis_kelamin` varchar(9) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `alamat_rumah` varchar(223) NOT NULL,
+  `agama` varchar(9) NOT NULL,
+  `pendidikans1` varchar(30) NOT NULL,
+  `pendidikans2` varchar(30) NOT NULL,
+  `pendidikans3` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `daftar_dosen`
+--
+
+INSERT INTO `daftar_dosen` (`foto_dosen`, `nama`, `nidn`, `jenis_kelamin`, `email`, `alamat_rumah`, `agama`, `pendidikans1`, `pendidikans2`, `pendidikans3`) VALUES
+('foto3.png', 'Djamaludin', 401099003, 'laki-laki', 'Djamaludin@unis.ac.id', 'Sepatan Tangerang', 'Islam', 'Universita Budi Luhur', 'Universitas Esa Unggul', 'Universitas Pelita Harapan'),
+('foto4.png', 'Risma Ningsih', 401099014, 'perempuan', 'risma@unis.ac.id', 'Babakan Tangerang', 'Kristen', 'Universita Esa Unggul', 'Universitas Pelita Harapan', 'Universitas Budi Luhur');
 
 --
 -- Indexes for dumped tables
@@ -60,6 +87,12 @@ ALTER TABLE `calon_mhs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `daftar_dosen`
+--
+ALTER TABLE `daftar_dosen`
+  ADD PRIMARY KEY (`nidn`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -67,7 +100,7 @@ ALTER TABLE `calon_mhs`
 -- AUTO_INCREMENT for table `calon_mhs`
 --
 ALTER TABLE `calon_mhs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

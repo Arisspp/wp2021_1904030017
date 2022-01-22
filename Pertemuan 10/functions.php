@@ -20,31 +20,3 @@ function query($query)
   }
   return $rows;
 }
-
-function tambah ($data)
-{
-  global $konn;
-
-  $nama =($data['nama']);
-  $alamat =($data['alamat']);
-  $jenis_kelamin =($data['jenis_kelamin']);
-  $agama =($data['agama']);
-  $sekolah_asal =($data['sekolah_asal']);
-  $foto_maba =($data['foto_maba']);
-
-  $query = "INSERT INTO calon_mhs 
-  VALUE
-  (null,'$nama','$alamat','$jenis_kelamin','$agama','$sekolah_asal','$foto_maba');";
-  mysqli_query($konn, $query);
-
-  echo mysqli_error($konn);
-  return mysqli_affected_rows($konn);
-}
-
-function hapus($id)
-{
-  global $konn;
-  mysqli_query($konn, "DELETE FROM calon_mhs WHERE id = $id") or die(mysqli_error($konn));
-  return mysqli_affected_rows($konn);
-  
-}

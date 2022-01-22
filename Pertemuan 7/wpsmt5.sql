@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2022 at 04:33 PM
+-- Generation Time: Jan 22, 2022 at 12:56 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -49,6 +49,33 @@ INSERT INTO `calon_mhs` (`id`, `nama`, `alamat`, `jenis_kelamin`, `agama`, `seko
 (6, 'Alibi', 'Pasadena 6\r\n', 'laki-laki', 'Islam', 'SMAN 5 ', 'foto2.png'),
 (7, 'Rikas Prawira', 'Newton 8 ', 'laki-laki', 'Islam', 'SMAN 2', 'foto1.png');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `daftar_dosen`
+--
+
+CREATE TABLE `daftar_dosen` (
+  `foto_dosen` varchar(12) NOT NULL,
+  `nama` varchar(40) NOT NULL,
+  `nidn` int(11) NOT NULL,
+  `jenis_kelamin` varchar(9) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `alamat_rumah` varchar(223) NOT NULL,
+  `agama` varchar(9) NOT NULL,
+  `pendidikans1` varchar(30) NOT NULL,
+  `pendidikans2` varchar(30) NOT NULL,
+  `pendidikans3` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `daftar_dosen`
+--
+
+INSERT INTO `daftar_dosen` (`foto_dosen`, `nama`, `nidn`, `jenis_kelamin`, `email`, `alamat_rumah`, `agama`, `pendidikans1`, `pendidikans2`, `pendidikans3`) VALUES
+('foto3.png', 'Djamaludin', 401099003, 'laki-laki', 'Djamaludin@unis.ac.id', 'Sepatan Tangerang', 'Islam', 'Universita Budi Luhur', 'Universitas Esa Unggul', 'Universitas Pelita Harapan'),
+('foto4.png', 'Risma Ningsih', 401099014, 'perempuan', 'risma@unis.ac.id', 'Babakan Tangerang', 'Kristen', 'Universita Esa Unggul', 'Universitas Pelita Harapan', 'Universitas Budi Luhur');
+
 --
 -- Indexes for dumped tables
 --
@@ -60,6 +87,12 @@ ALTER TABLE `calon_mhs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `daftar_dosen`
+--
+ALTER TABLE `daftar_dosen`
+  ADD PRIMARY KEY (`nidn`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -67,7 +100,7 @@ ALTER TABLE `calon_mhs`
 -- AUTO_INCREMENT for table `calon_mhs`
 --
 ALTER TABLE `calon_mhs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
