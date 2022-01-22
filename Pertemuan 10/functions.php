@@ -20,3 +20,71 @@ function query($query)
   }
   return $rows;
 }
+function tambah($data)
+{
+  global $konn;
+
+  $nama = htmlspecialchars($data['nama']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $jenis_kelamin = htmlspecialchars($data['jenis_kelamin']);
+  $agama = htmlspecialchars($data['agama']);
+  $sekolah_asal = htmlspecialchars($data['sekolah_asal']);
+  $foto_maba = htmlspecialchars($data['foto_maba']);
+
+  $query = "INSERT INTO calon_mhs
+  VALUES
+  (null,'$nama','$alamat','$jenis_kelamin','$agama','$sekolah_asal','$foto_maba');";
+  mysqli_query($konn, $query);
+
+  echo mysqli_error($konn);
+  return mysqli_affected_rows($konn);
+}
+
+function hapus($id)
+{
+  global $konn;
+  mysqli_query($konn, "DELETE FROM calon_mhs WHERE id =$id") or die(mysqli_error($konn));
+  return mysqli_affected_rows($konn);
+}
+
+function edit($data)
+{
+  global $konn;
+
+  $id = $data['id'];
+  $nama = htmlspecialchars($data['nama']);
+  $alamat =  htmlspecialchars($data['alamat']);
+  $jenis_kelamin =  htmlspecialchars($data['jenis_kelamin']);
+  $agama =  htmlspecialchars($data['agama']);
+  $sekolah_asal =  htmlspecialchars($data['sekolah_asal']);
+  $foto_maba =  htmlspecialchars($data['foto_maba']);
+
+  $query = "UPDATE calon_mhs SET
+  nama ='$nama',
+  alamat ='$alamat',
+  jenis_kelamin ='$jenis_kelamin',
+  agama ='$agama',
+  sekolah_asal ='$sekolah_asal',
+  foto_maba ='$foto_maba'
+  WHERE id =$id;";
+
+  mysqli_query($konn, $query);
+
+  echo mysqli_error($konn);
+  return mysqli_affected_rows($konn);
+}
+
+function cari($keyword)
+{
+  global $konn;
+
+  $query = "SELECT * FROM calon_mhs WHERE nama LIKE'%$keyword%'";
+  $result = mysqli_query($konn, $query);
+
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+
+  return $rows;
+}

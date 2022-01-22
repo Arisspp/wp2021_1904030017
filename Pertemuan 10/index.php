@@ -1,8 +1,13 @@
 <?php
-date_default_timezone_set('Asia/Jakarta');
+// date_default_timezone_set('Asia/Jakarta');
 
 require 'functions.php';
 $camaba = query("SELECT * FROM calon_mhs");
+
+if (isset($_POST['cari'])) {
+    $camaba = cari($_POST['keyword']);
+}
+
 ?>
 
 <!doctype html>
@@ -72,6 +77,15 @@ $camaba = query("SELECT * FROM calon_mhs");
             <!-- Konten -->
             <h3><i class="fas fa-users"></i>Daftar Calon Mahasiswa</h3>
             <hr>
+            <!-- Pencarian data -->
+            <form action="" method="POST">
+                <input type="text" id="keyword" size="50" name="keyword" placeholder="masukan keyword" autocomplete="off">
+                <button type="submit" class="btn btn-primary" name="cari">CARI</button>
+            </form>
+
+            <br>
+            <hr>
+            <!-- Akhir pencarian data -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -81,6 +95,16 @@ $camaba = query("SELECT * FROM calon_mhs");
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
+
+                <?php if (empty($camaba)) : ?>
+                    <tr>
+                        <td colspan="4" class="alert alert-danger text-center" role="alert">
+                            <p><b>
+                                    Data Mahasiswa tidak ditemukan</p>
+                            </b>
+                        </td>
+                    </tr>
+                <?php endif; ?>
                 <tbody>
                     <?php $no = 1; ?>
                     <?php foreach ($camaba as $cmb) : ?>
