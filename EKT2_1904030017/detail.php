@@ -10,7 +10,9 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 $camaba = query("SELECT * FROM calon_mhs WHERE id=$id");
 // var_dump($camaba[0]['nama']);
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
